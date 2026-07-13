@@ -13,12 +13,25 @@ public class Warehouse {
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
                 grid[x][y] = new Slot(id++, x, y, 10); // capacity 10 for now
+
             }
+
+
         }
     }
 
     public Slot getSlot(int x, int y) {
         return grid[x][y];
+    }
+    public Slot findSlotForItem(Item item) {
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
+                if (grid[x][y].getCurrentItem() == item) {
+                    return grid[x][y];
+                }
+            }
+        }
+        return null;
     }
 
     public int getWidth() { return width; }
